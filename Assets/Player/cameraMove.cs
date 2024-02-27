@@ -11,6 +11,7 @@ public class cameraMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //hide the cursor
         Cursor.lockState = CursorLockMode.Locked;
     }
 
