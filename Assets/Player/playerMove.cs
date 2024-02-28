@@ -23,6 +23,22 @@ public class playermove : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal");
         forwardInput = Input.GetAxis("Vertical");
 
+        //Get camera normalized directional vectors
+        Vector3 forward = GameObject.Find("PlayerCam").GetComponent<Camera>().transform.forward;
+        Vector3 right = GameObject.Find("PlayerCam").GetComponent<Camera>().transform.right;
+        forward.y = 0;
+        right.y = 0;
+        forward = forward.normalized;
+        right = right.normalized;
+
+        //create direction-relativ-input vectors
+        Vector3 forwardRelativeVerticalInput = forwardInput * forward;
+        Vector3 rightRelativeHorizontalInput = horizontalInput * right;
+
+        //create and apply camera relative movement
+        Vector3 cameraRelativeMovement = forwardRelativeVerticalInput + rightRelativeHorizontalInput;
+        this.transform.Translate(cameraRelativeMovement, Space.World);
+
         //move the player forward
         transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
         transform.Translate(Vector3.right * Time.deltaTime * speed * horizontalInput);
