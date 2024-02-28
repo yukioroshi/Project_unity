@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class playermove : MonoBehaviour
 {
-    public float speed = 5.0f;
-    public float jumpForce = 5.0f;
+    public float speed;
+    public float jumpForce;
+    public bool isonground = true;
     private float horizontalInput;
     private float forwardInput;
     private Rigidbody playerRb;
@@ -32,23 +33,34 @@ public class playermove : MonoBehaviour
         right = right.normalized;
 
         //create direction-relativ-input vectors
-        Vector3 forwardRelativeVerticalInput = forwardInput * forward;
-        Vector3 rightRelativeHorizontalInput = horizontalInput * right;
+        Vector3 forwardRelativeVerticalInput = forwardInput * speed * 0.01f * forward;
+        Vector3 rightRelativeHorizontalInput = horizontalInput * speed * 0.01f * right;
 
         //create and apply camera relative movement
         Vector3 cameraRelativeMovement = forwardRelativeVerticalInput + rightRelativeHorizontalInput;
         this.transform.Translate(cameraRelativeMovement, Space.World);
 
         //move the player forward
-        transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
-        transform.Translate(Vector3.right * Time.deltaTime * speed * horizontalInput);
+        //transform.Translate(Vector3.forward * Time.deltaTime * forwardInput);
+        //transform.Translate(Vector3.right * Time.deltaTime * horizontalInput);
+        Debug.Log(speed);
 
         //let the player jump
-        if (Input.GetKeyDown(KeyCode.Space)) 
+        if (Input.GetKeyDown(KeyCode.Space) && isonground) 
         {
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            isonground = false;
         }
 
 
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground")) 
+        {
+            isonground = true;
+        }
+    }
+
 }
