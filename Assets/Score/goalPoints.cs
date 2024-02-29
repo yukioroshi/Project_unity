@@ -26,7 +26,8 @@ public class goalPoints : MonoBehaviour
 
         if (collision.transform.name == "goalGb")
         {
-            score.ScoreR += 1;
+            score.ScoreB += 1;
+            Destroy(gameObject);
         }
     }
 
