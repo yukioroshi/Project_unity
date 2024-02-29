@@ -43,7 +43,7 @@ public class playermove : MonoBehaviour
         //move the player forward
         //transform.Translate(Vector3.forward * Time.deltaTime * forwardInput);
         //transform.Translate(Vector3.right * Time.deltaTime * horizontalInput);
-        Debug.Log(speed);
+        //Debug.Log(speed);
 
         //let the player jump
         if (Input.GetKeyDown(KeyCode.Space) && isonground) 

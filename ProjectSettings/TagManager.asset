@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Undefined
   - Ground
+  - GoalRed
+  - GoalBlue
+  - Ball
+  - scoreTred
+  - scoreTblue
   layers:
   - Default
   - TransparentFX
