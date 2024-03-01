@@ -5,6 +5,7 @@ using UnityEngine;
 public class goalPoints : MonoBehaviour
 {
     Vector3 originalPos;
+    [SerializeField] GameObject player1;
 
     // Start is called before the first frame update
     void Start()
@@ -18,20 +19,19 @@ public class goalPoints : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision col)
     {
-        if (collision.transform.name == "goalGr")
+        if (col.transform.name == "Player1")
         {
             score.ScoreR += 1;
             gameObject.transform.position = originalPos;
         }
 
-        if (collision.transform.name == "goalGb")
+        if (col.transform.name == "goalGb")
         {
             score.ScoreB += 1;
             gameObject.transform.position = originalPos;
+            player1.transform.position = originalPos;
         }
     }
-
-    
 }

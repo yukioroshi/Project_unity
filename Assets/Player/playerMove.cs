@@ -11,10 +11,14 @@ public class playermove : MonoBehaviour
     private float forwardInput;
     private Rigidbody playerRb;
 
+    Vector3 originalPos;
+
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
+
+        originalPos = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
     }
 
     // Update is called once per frame
@@ -51,6 +55,8 @@ public class playermove : MonoBehaviour
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isonground = false;
         }
+
+
 
 
     }
