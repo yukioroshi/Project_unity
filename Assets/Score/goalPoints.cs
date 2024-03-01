@@ -5,6 +5,7 @@ using UnityEngine;
 public class goalPoints : MonoBehaviour
 {
     Vector3 originalPos;
+    [SerializeField] GameObject player1;
 
     // Start is called before the first frame update
     void Start()
@@ -30,8 +31,7 @@ public class goalPoints : MonoBehaviour
         {
             score.ScoreB += 1;
             gameObject.transform.position = originalPos;
+            player1.transform.position = originalPos;
         }
     }
-
-    
 }

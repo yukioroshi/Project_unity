@@ -11,6 +11,9 @@ public class cameraMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //cam = GetComponentInChildren<Camera>()[0];
+        //cam.fieldofview = Mathf.Lerp(90, 60, )
+
         //hide the cursor
         Cursor.lockState = CursorLockMode.Locked;
     }
