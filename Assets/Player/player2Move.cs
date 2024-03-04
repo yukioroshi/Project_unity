@@ -41,6 +41,11 @@ public class player2Move : MonoBehaviour
             isonground = false;
         }
 
+        while (Input.GetKeyDown(KeyCode.RightAlt))
+        {
+
+        }
+
     }
 
     private void OnCollisionEnter(Collision collision)
