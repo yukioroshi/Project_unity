@@ -27,13 +27,6 @@ public class playermove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //let the player jump
-        if (Input.GetKeyDown(KeyCode.Space) && isonground) 
-        {
-            playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            isonground = false;
-        }
-
 
     }
 
@@ -44,11 +37,23 @@ public class playermove : MonoBehaviour
         forwardInput = Input.GetAxis("Vertical");
 
         //move the player forward
-        playerRb.AddForce(Vector3.forward * Time.deltaTime * forwardInput, ForceMode.Force);
+        //playerRb.AddForce(Vector3.forward * Time.deltaTime * forwardInput, ForceMode.Force);
 
         //rotate the player
         rotate = horizontalInput * rotationspeed * Time.deltaTime;
         transform.Rotate(0f, rotate, 0f);
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            playerRb.AddForce(transform.forward * 1);
+        }
+
+        //let the player jump
+        if (Input.GetKeyDown(KeyCode.Space) && isonground)
+        {
+            playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            isonground = false;
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
