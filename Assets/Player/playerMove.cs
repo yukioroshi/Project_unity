@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class playermove : MonoBehaviour
 {
+
     public float speed;
     public float jumpForce;
 
@@ -18,7 +19,6 @@ public class playermove : MonoBehaviour
     public bool isonground = true;
 
     private Rigidbody playerRb;
-
 
     // Start is called before the first frame update
     void Start()
@@ -58,13 +58,7 @@ public class playermove : MonoBehaviour
             isonground = false;
         }
     }
-
-    private void FixedUpdate()
-    {
-    
-    }
-
-
+   
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground")) 
