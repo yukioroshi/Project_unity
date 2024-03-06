@@ -39,6 +39,11 @@ public class player2Move : MonoBehaviour
             playerRb.AddRelativeForce(Vector3.forward * speed, ForceMode.Acceleration);
             
         }
+        if (Input.GetKey(KeyCode.K))
+        {
+            playerRb.AddRelativeForce(Vector3.back * speed, ForceMode.Acceleration);
+
+        }
 
         if (Input.GetKeyDown(KeyCode.RightAlt) && isonground)
         {

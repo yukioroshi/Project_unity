@@ -45,6 +45,11 @@ public class playermove : MonoBehaviour
             playerRb.AddRelativeForce(Vector3.forward * speed, ForceMode.Acceleration);
             
         }
+        if (Input.GetKey(KeyCode.D))
+        {
+            playerRb.AddRelativeForce(Vector3.back * speed, ForceMode.Acceleration);
+
+        }
 
         //let the player jump
         if (Input.GetKeyDown(KeyCode.Space) && isonground)

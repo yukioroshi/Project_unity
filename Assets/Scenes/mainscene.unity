@@ -1130,7 +1130,7 @@ PrefabInstance:
     - target: {fileID: -2301437738149310807, guid: 3028c0ae35bc3624cbd6ef68eb3ca771,
         type: 3}
       propertyPath: jumpForce
-      value: 500
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 1566257463131402754, guid: 3028c0ae35bc3624cbd6ef68eb3ca771,
         type: 3}
@@ -1263,17 +1263,22 @@ PrefabInstance:
     - target: {fileID: 2507771888329997716, guid: 2bb153597028c6742836ac33b6084347,
         type: 3}
       propertyPath: m_Drag
-      value: 0.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2507771888329997716, guid: 2bb153597028c6742836ac33b6084347,
         type: 3}
       propertyPath: m_Mass
-      value: 50
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2507771888329997716, guid: 2bb153597028c6742836ac33b6084347,
         type: 3}
       propertyPath: m_Constraints
       value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: 4159396759572688436, guid: 2bb153597028c6742836ac33b6084347,
+        type: 3}
+      propertyPath: jumpForce
+      value: 600
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
