@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.AnimatedValues;
 using UnityEngine;
 
 public class goalPoints : MonoBehaviour
 {
     Vector3 originalPos;
     [SerializeField] GameObject player1;
+    [SerializeField] GameObject player2;
+
+    //Transform arrow;
+    //arrow.rotation = Quaternion.LookRotation(ball.position - arrow.position) * Quaternion.Euler(-90,0,0);
 
     // Start is called before the first frame update
     void Start()
@@ -35,3 +40,5 @@ public class goalPoints : MonoBehaviour
         }
     }
 }
+
+

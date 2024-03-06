@@ -2,23 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playermove : MonoBehaviour
+public class PlayerMove : MonoBehaviour
 {
     public float speed;
     public float jumpForce;
     public bool isonground = true;
     private float horizontalInput;
     private float forwardInput;
-    private Rigidbody playerRb;
+    private static Rigidbody playerRb1;
+    private static Rigidbody playerRb2;
 
-    Vector3 originalPos;
+    public static Vector3 originalPosJ1;
+    public static Vector3 originalPosJ2;
 
     // Start is called before the first frame update
     void Start()
     {
-        playerRb = GetComponent<Rigidbody>();
-
-        originalPos = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
+        if (gameObject.CompareTag("Player1"))
+        {
+            originalPosJ1 = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
+            playerRb1 = GetComponent<Rigidbody>();
+        }
+        if (gameObject.CompareTag("Player2"))
+        {
+            originalPosJ2 = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
+            playerRb2 = GetComponent<Rigidbody>();
+        }
     }
 
     // Update is called once per frame
@@ -52,12 +61,9 @@ public class playermove : MonoBehaviour
         //let the player jump
         if (Input.GetKeyDown(KeyCode.Space) && isonground) 
         {
-            playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            playerRb1.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isonground = false;
         }
-
-
-
 
     }
 
@@ -68,5 +74,13 @@ public class playermove : MonoBehaviour
             isonground = true;
         }
     }
+    
+    /*Place les joueurs dans leur positions d'origine: à appeler dans goalscript apres un but*/
+  public static void setPlayerPos(Vector3 posPlayer1, Vector3 posPlayer2)
+    {
+        playerRb1.transform.position = posPlayer1;
+        playerRb2.transform.position = posPlayer2;
+    }
+
 
 }

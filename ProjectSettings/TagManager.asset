@@ -13,6 +13,8 @@ TagManager:
   - scoreTblue
   - Player1
   - Player2
+  - GoalBlueGround
+  - GoalRedGround
   layers:
   - Default
   - TransparentFX
