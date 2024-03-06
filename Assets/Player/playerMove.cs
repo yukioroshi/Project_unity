@@ -27,11 +27,6 @@ public class playermove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-    }
-
-    private void FixedUpdate()
-    {
         //get player input
         horizontalInput = Input.GetAxis("Horizontal");
         forwardInput = Input.GetAxis("Vertical");
@@ -43,9 +38,10 @@ public class playermove : MonoBehaviour
         rotate = horizontalInput * rotationspeed * Time.deltaTime;
         transform.Rotate(0f, rotate, 0f);
 
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetButtonDown("Z"))
         {
-            playerRb.AddForce(transform.forward * 1);
+            playerRb.AddForce(Vector3.forward * 20f);
+            Debug.Log("avant");
         }
 
         //let the player jump
@@ -54,6 +50,11 @@ public class playermove : MonoBehaviour
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isonground = false;
         }
+    }
+
+    private void FixedUpdate()
+    {
+
     }
 
     private void OnCollisionEnter(Collision collision)
