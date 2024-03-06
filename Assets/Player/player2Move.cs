@@ -29,21 +29,21 @@ public class player2Move : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal2");
         verticalInput = Input.GetAxis("Vertical2");
 
-        transform.Translate(Vector3.forward * Time.deltaTime * verticalInput * speed);
+        //transform.Translate(Vector3.forward * Time.deltaTime * verticalInput * speed);
 
         rotate = horizontalInput * rotationspeed * Time.deltaTime;
         transform.Rotate(0f, rotate, 0f);
 
+        if (Input.GetKey(KeyCode.I))
+        {
+            playerRb.AddRelativeForce(Vector3.forward * speed, ForceMode.Acceleration);
+            
+        }
 
         if (Input.GetKeyDown(KeyCode.RightAlt) && isonground)
         {
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isonground = false;
-        }
-
-        while (Input.GetKeyDown(KeyCode.RightAlt))
-        {
-
         }
 
     }

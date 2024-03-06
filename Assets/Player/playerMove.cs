@@ -19,6 +19,7 @@ public class playermove : MonoBehaviour
 
     private Rigidbody playerRb;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,10 +40,10 @@ public class playermove : MonoBehaviour
         transform.Rotate(0f, rotate, 0f);
 
         //move the player forward
-        if (Input.GetKeyDown(KeyCode.E))
-       {
-            playerRb.AddForce(Vector3.forward * forwardInput *  100f, ForceMode.Impulse);
-            Debug.Log("avant");
+       if (Input.GetKey(KeyCode.E))
+        {
+            playerRb.AddRelativeForce(Vector3.forward * speed, ForceMode.Acceleration);
+            
         }
 
         //let the player jump
@@ -55,8 +56,9 @@ public class playermove : MonoBehaviour
 
     private void FixedUpdate()
     {
-        
+    
     }
+
 
     private void OnCollisionEnter(Collision collision)
     {
