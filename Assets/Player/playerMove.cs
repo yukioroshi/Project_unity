@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -31,16 +32,16 @@ public class playermove : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal");
         forwardInput = Input.GetAxis("Vertical");
 
-        //move the player forward
-        //playerRb.AddForce(Vector3.forward * Time.deltaTime * forwardInput, ForceMode.Force);
+        
 
         //rotate the player
         rotate = horizontalInput * rotationspeed * Time.deltaTime;
         transform.Rotate(0f, rotate, 0f);
 
-        if (Input.GetButtonDown("Z"))
-        {
-            playerRb.AddForce(Vector3.forward * 20f);
+        //move the player forward
+        if (Input.GetKeyDown(KeyCode.E))
+       {
+            playerRb.AddForce(Vector3.forward * forwardInput *  100f, ForceMode.Impulse);
             Debug.Log("avant");
         }
 
@@ -54,7 +55,7 @@ public class playermove : MonoBehaviour
 
     private void FixedUpdate()
     {
-
+        
     }
 
     private void OnCollisionEnter(Collision collision)

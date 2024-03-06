@@ -151,8 +151,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb7710325d2a3a049843443bf312d3d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 8
+  speed: 20
   jumpForce: 65
+  rotationspeed: 100
   isonground: 1
 --- !u!1 &1518751022619513438
 GameObject:
@@ -272,6 +273,7 @@ GameObject:
   - component: {fileID: 5755393844518827040}
   - component: {fileID: 7889260277264704661}
   - component: {fileID: 8880394306021451361}
+  - component: {fileID: 4636302864782141609}
   m_Layer: 0
   m_Name: Player2Cam
   m_TagString: Untagged
@@ -397,6 +399,19 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!114 &4636302864782141609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1983132801530363737}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e61bde9d700d48043a25f7d2335a1618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sensitivity: -1
 --- !u!1 &2665977446566751898
 GameObject:
   m_ObjectHideFlags: 0
