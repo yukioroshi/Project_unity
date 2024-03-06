@@ -18,7 +18,7 @@ public class ArrowScript : MonoBehaviour
     {
        //Debug.DrawRay(transform.position, (ball.transform.position - transform.position), Color.red);
        ballOrientation = (ball.transform.position - transform.position);
-       orientation = new Quaternion(ballOrientation.x+135f, ballOrientation.y, ballOrientation.z,0);
+       orientation = new Quaternion(ballOrientation.x, ballOrientation.y, ballOrientation.z,0);
        transform.rotation = orientation;
 
     }
