@@ -447,6 +447,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 809719037}
+--- !u!20 &1211350223 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 5755393844518827040, guid: 2bb153597028c6742836ac33b6084347,
+    type: 3}
+  m_PrefabInstance: {fileID: 8335803944555491290}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1255927661
 GameObject:
   m_ObjectHideFlags: 0
@@ -1110,6 +1116,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -2301437738149310807, guid: 3028c0ae35bc3624cbd6ef68eb3ca771,
         type: 3}
+      propertyPath: finalFOV
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: -2301437738149310807, guid: 3028c0ae35bc3624cbd6ef68eb3ca771,
+        type: 3}
       propertyPath: cursorRed
       value: 
       objectReference: {fileID: 127686455}
@@ -1123,6 +1134,11 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 1368473563}
+    - target: {fileID: -2301437738149310807, guid: 3028c0ae35bc3624cbd6ef68eb3ca771,
+        type: 3}
+      propertyPath: durationFov
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: -2301437738149310807, guid: 3028c0ae35bc3624cbd6ef68eb3ca771,
         type: 3}
       propertyPath: rotationspeed
@@ -1323,6 +1339,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4159396759572688436, guid: 2bb153597028c6742836ac33b6084347,
         type: 3}
+      propertyPath: finalFOV
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 4159396759572688436, guid: 2bb153597028c6742836ac33b6084347,
+        type: 3}
       propertyPath: jumpForce
       value: 600
       objectReference: {fileID: 0}
@@ -1331,6 +1352,16 @@ PrefabInstance:
       propertyPath: cursorBlue
       value: 
       objectReference: {fileID: 1518459507}
+    - target: {fileID: 4159396759572688436, guid: 2bb153597028c6742836ac33b6084347,
+        type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 1211350223}
+    - target: {fileID: 4159396759572688436, guid: 2bb153597028c6742836ac33b6084347,
+        type: 3}
+      propertyPath: durationFov
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4159396759572688436, guid: 2bb153597028c6742836ac33b6084347,
         type: 3}
       propertyPath: rotationspeed

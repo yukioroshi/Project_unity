@@ -27,7 +27,8 @@ public class player2Move : MonoBehaviour
     public bool isrunning = false;
 
     public Camera mainCamera;
-    public float newFOV = 80f;
+    public float finalFOV;
+    public float durationFov;
 
     // Start is called before the first frame update
     void Start()
@@ -63,13 +64,12 @@ public class player2Move : MonoBehaviour
             {
                 playerRb.AddRelativeForce(Vector3.forward * speed * 2, ForceMode.Acceleration);
                 stamina -= staminaConsumtion * Time.deltaTime * 2;
-                mainCamera.fieldOfView = newFOV;
+                mainCamera.fieldOfView = Mathf.Lerp(mainCamera.fieldOfView, 80, durationFov * Time.deltaTime);
                 isrunning = true;
                 //Debug.Log(stamina);
             }
             else
             {
-                mainCamera.fieldOfView = 60f;
                 isrunning = false;
                 StartCoroutine(sprintcd());
             }
@@ -77,6 +77,7 @@ public class player2Move : MonoBehaviour
         }
         else
         {
+            mainCamera.fieldOfView = Mathf.Lerp(mainCamera.fieldOfView, 60, durationFov * Time.deltaTime);
             isrunning = false;
         }
 
