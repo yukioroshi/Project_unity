@@ -515,6 +515,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &1368473563 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 5885398100128058820, guid: 3028c0ae35bc3624cbd6ef68eb3ca771,
+    type: 3}
+  m_PrefabInstance: {fileID: 6710623384852513927}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1518459507 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5482476292132239464, guid: 81a824fb91546d740ad4b9a0f0c3d946,
@@ -1112,6 +1118,11 @@ PrefabInstance:
       propertyPath: jumpForce
       value: 600
       objectReference: {fileID: 0}
+    - target: {fileID: -2301437738149310807, guid: 3028c0ae35bc3624cbd6ef68eb3ca771,
+        type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 1368473563}
     - target: {fileID: -2301437738149310807, guid: 3028c0ae35bc3624cbd6ef68eb3ca771,
         type: 3}
       propertyPath: rotationspeed
