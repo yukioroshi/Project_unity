@@ -30,6 +30,18 @@ public class goalPoints : MonoBehaviour
         
     }
 
+    public void resetP1()
+    {
+        player1.gameObject.transform.position = originalPosPl1;
+        player1.gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+    }
+
+    public void resetP2()
+    {
+        player2.gameObject.transform.position = originalPosPl2;
+        player2.gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.transform.name == "goalGr")
@@ -38,10 +50,8 @@ public class goalPoints : MonoBehaviour
             gameObject.transform.position = originalPosBall;
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
-            player1.gameObject.transform.position = originalPosPl1;
-            player2.gameObject.transform.position = originalPosPl2;
-            player1.gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
-            player2.gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
+            resetP1();
+            resetP2();
         }
 
         if (collision.transform.name == "goalGb")
@@ -50,10 +60,8 @@ public class goalPoints : MonoBehaviour
             gameObject.transform.position = originalPosBall;
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
-            player1.gameObject.transform.position = originalPosPl1;
-            player2.gameObject.transform.position = originalPosPl2;
-            player1.gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
-            player2.gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
+            resetP1();
+            resetP2();
         }
     }
 }
