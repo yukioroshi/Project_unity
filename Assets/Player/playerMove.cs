@@ -8,6 +8,8 @@ using UnityEngine.UI;
 public class playermove : MonoBehaviour
 {
 
+    public Slider cursorRed;
+
     public float speed;
     public float jumpForce;
 
@@ -22,10 +24,10 @@ public class playermove : MonoBehaviour
     private Rigidbody playerRb;
 
     public float stamina = 50;
+    public float staminamax = 50;
     public float staminaConsumtion = 10;
     public bool isrunning = false;
-    public float Cooldown = 5f;
-    private float currentCooldown = 0f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -58,29 +60,26 @@ public class playermove : MonoBehaviour
 
         if(Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.E))
         {
-            if(stamina >= 0 )
+            if(stamina > 0.2f)
             {
                 playerRb.AddRelativeForce(Vector3.forward * speed * 2, ForceMode.Acceleration);
-                stamina -= staminaConsumtion * Time.deltaTime;
+                stamina -= staminaConsumtion * Time.deltaTime * 2;
                 isrunning = true;
                 Debug.Log(stamina);
-                
             }
             else
             {
                 isrunning = false;
+                StartCoroutine(sprintcd());
             }
+
         }
         else
         {
             isrunning = false;
         }
 
-        if (stamina <= 0)
-        {
-            stamina = 0;
-        }
-
+        
 
         //let the player jump
         if (Input.GetKeyDown(KeyCode.Space) && isonground)
@@ -88,9 +87,41 @@ public class playermove : MonoBehaviour
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isonground = false;
         }
+
+        if (Input.GetKey(KeyCode.Space) && !isonground)
+        {
+            if ( stamina > 0.2f )
+            {
+                playerRb.AddForce(Vector3.up * speed, ForceMode.Acceleration);
+                stamina -= staminaConsumtion * Time.deltaTime * 2;
+                //isonground = false;
+                Debug.Log(stamina);
+            }
+
+        }
+
+        if (stamina <= 0)
+        {
+            stamina = 0;
+        }
+
+        if (isonground)
+        {
+            stamina += 0.03f;
+        }
+        if (stamina > staminamax)
+        {
+            stamina = staminamax;
+        }
+
+        cursorRed.value = stamina;
     }
 
-   
+    IEnumerator sprintcd()
+    {
+        yield return new WaitForSeconds(3.0f);
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground")) 
