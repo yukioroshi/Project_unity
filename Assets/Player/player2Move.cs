@@ -11,7 +11,7 @@ public class player2Move : MonoBehaviour
     private float horizontalInput;
     private float verticalInput;
 
-    public float speed;
+    public float speed = 20f;
     public float jumpForce;
 
     private float rotate;
@@ -21,19 +21,29 @@ public class player2Move : MonoBehaviour
 
     private Rigidbody playerRb;
 
+    //pour sprint et jetpack
     public float stamina = 50;
     public float staminamax = 50;
     public float staminaConsumtion = 10;
     public bool isrunning = false;
 
+    //pour FOV
     public Camera mainCamera;
     public float finalFOV;
     public float durationFov;
+
+    //pour pousser la ball
+    public Transform targetObject;
+    private Rigidbody ballRB;
+    public GameObject ballObject;
+    public float forceMagnitude = 10f;
+    public float detectionRadius = 5f;
 
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
+        ballRB = ballObject.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -42,10 +52,20 @@ public class player2Move : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal2");
         verticalInput = Input.GetAxis("Vertical2");
 
-        //transform.Translate(Vector3.forward * Time.deltaTime * verticalInput * speed);
-
         rotate = horizontalInput * rotationspeed * Time.deltaTime;
         transform.Rotate(0f, rotate, 0f);
+
+        //pousse la ball
+        if (Vector3.Distance(transform.position, targetObject.position) < detectionRadius)
+        {
+            Vector3 direction = (targetObject.position - transform.position).normalized;
+
+            if (Input.GetKeyDown(KeyCode.UpArrow) && stamina > 10)
+            {
+                ballRB.AddForce(direction * forceMagnitude, ForceMode.Impulse);
+                stamina -= 10f;
+            }
+        }
 
         if (Input.GetKey(KeyCode.I))
         {
@@ -105,7 +125,7 @@ public class player2Move : MonoBehaviour
 
         if (isonground)
         {
-            stamina += 0.03f;
+            stamina += 0.05f;
         }
         if (stamina > staminamax)
         {

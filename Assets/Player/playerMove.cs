@@ -10,7 +10,7 @@ public class playermove : MonoBehaviour
 
     public Slider cursorRed;
 
-    public float speed;
+    public float speed = 20f;
     public float jumpForce;
 
     private float horizontalInput;
@@ -23,21 +23,29 @@ public class playermove : MonoBehaviour
 
     private Rigidbody playerRb;
 
+    //pour sprint et jetpack
     public float stamina = 50;
     public float staminamax = 50;
     public float staminaConsumtion = 10;
     public bool isrunning = false;
 
+    //pour FOV
     public Camera mainCamera;
     public float finalFOV;
     public float durationFov;
 
-
+    //pour pousser la ball
+    public Transform targetObject;
+    private Rigidbody ballRB;
+    public GameObject ballObject;
+    public float forceMagnitude = 10f;
+    public float detectionRadius = 5f;
 
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
+        ballRB = ballObject.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -47,11 +55,22 @@ public class playermove : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal");
         forwardInput = Input.GetAxis("Vertical");
 
-        
 
         //rotate the player
         rotate = horizontalInput * rotationspeed * Time.deltaTime;
         transform.Rotate(0f, rotate, 0f);
+
+        //pousse la ball
+        if (Vector3.Distance(transform.position, targetObject.position) < detectionRadius)
+        {
+            Vector3 direction = (targetObject.position - transform.position).normalized;
+
+            if (Input.GetKeyDown(KeyCode.C) && stamina > 10) 
+            {
+                ballRB.AddForce(direction * forceMagnitude, ForceMode.Impulse);
+                stamina -= 10f;
+            }
+        }
 
         //move the player forward
         if (Input.GetKey(KeyCode.E))
@@ -64,6 +83,7 @@ public class playermove : MonoBehaviour
             playerRb.AddRelativeForce(Vector3.back * speed, ForceMode.Acceleration);
         }
 
+        //sprint
         if(Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.E))
         {
             if(stamina > 0.2f)
@@ -76,7 +96,6 @@ public class playermove : MonoBehaviour
             }
             else
             {
-                
                 isrunning = false;
                 StartCoroutine(sprintcd());
             }
@@ -96,6 +115,7 @@ public class playermove : MonoBehaviour
             isonground = false;
         }
 
+        //jetpack
         if (Input.GetKey(KeyCode.Space) && !isonground)
         {
             if ( stamina > 0.2f )
@@ -112,16 +132,23 @@ public class playermove : MonoBehaviour
             stamina = 0;
         }
 
+        //regen la stamina
         if (isonground)
         {
-            stamina += 0.03f;
+            stamina += 0.05f;
         }
         if (stamina > staminamax)
         {
             stamina = staminamax;
         }
 
+        //link la valeur de stamina au slider
         cursorRed.value = stamina;
+    }
+
+    private void FixedUpdate()
+    {
+
     }
 
     IEnumerator sprintcd()
@@ -129,6 +156,7 @@ public class playermove : MonoBehaviour
         yield return new WaitForSeconds(3.0f);
     }
 
+    //detect la collision avec le sol
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground")) 
