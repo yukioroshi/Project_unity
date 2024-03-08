@@ -10,8 +10,8 @@ public class playermove : MonoBehaviour
 
     public Slider cursorRed;
 
-    public float speed = 20f;
-    public float jumpForce;
+    public float speed = 50f;
+    public float jumpForce = 1000f;
 
     private float horizontalInput;
     private float forwardInput;
@@ -38,8 +38,8 @@ public class playermove : MonoBehaviour
     public Transform targetObject;
     private Rigidbody ballRB;
     public GameObject ballObject;
-    public float forceMagnitude = 10f;
-    public float detectionRadius = 5f;
+    public float forceMagnitude = 60f;
+    public float detectionRadius = 15f;
 
     // Start is called before the first frame update
     void Start()
