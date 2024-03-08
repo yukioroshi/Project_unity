@@ -937,6 +937,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: obstacle
       objectReference: {fileID: 0}
+    - target: {fileID: 8981267990378233815, guid: 1670a7bcfa6a9854886ab9bc6483c355,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1162,7 +1167,7 @@ PrefabInstance:
     - target: {fileID: -2301437738149310807, guid: 3028c0ae35bc3624cbd6ef68eb3ca771,
         type: 3}
       propertyPath: speed
-      value: 12
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: -2301437738149310807, guid: 3028c0ae35bc3624cbd6ef68eb3ca771,
         type: 3}
@@ -1410,7 +1415,7 @@ PrefabInstance:
     - target: {fileID: 4159396759572688436, guid: 2bb153597028c6742836ac33b6084347,
         type: 3}
       propertyPath: speed
-      value: 12
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4159396759572688436, guid: 2bb153597028c6742836ac33b6084347,
         type: 3}

@@ -15,6 +15,8 @@ public class RandomPos : MonoBehaviour
     public float minZ = -5f;
     public float maxZ = 5f;
 
+    public string LevelToLoad;
+
     // Start is called before the first frame update
     void Start()
     {
