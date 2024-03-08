@@ -17,6 +17,7 @@ public class Menubehavior : MonoBehaviour
     void ActionOnClick()
     {
         SceneManager.LoadScene("mainscene");
+        Timer.TimeLeft = 300;
     }
 
     // Update is called once per frame
